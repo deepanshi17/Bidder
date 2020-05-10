@@ -1,9 +1,19 @@
+package assignment7Client;
+
+import java.io.*; 
+import java.net.*;
+
+import javafx.application.Application;
+import javafx.fxml.*;
+import javafx.scene.*;
+import javafx.stage.*;
+
 /*
  * Author: Vallath Nandakumar and the EE 422C Instructors
  * Date: April 20, 2020
  * This code is for starting  out your JavaFX application from SceneBuilder. It doesn't compile.
  */
-public class Client extends Application {
+public class SceneBuilderClient extends Application {
 
     ClientController controller;
     ObjectInputStream reader;
