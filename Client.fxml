@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="526.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="526.0" prefWidth="647.0" VBox.vgrow="ALWAYS">
+        <columnConstraints>
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="-Infinity" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="-Infinity" prefHeight="62.330291748046875" />
+          <RowConstraints maxHeight="1.7976931348623157E308" minHeight="0.0" prefHeight="463.6697082519531" vgrow="ALWAYS" />
+        </rowConstraints>
+         <children>
+            <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="73.0" prefWidth="838.0" style="-fx-background-color: #2C3949;" GridPane.hgrow="ALWAYS" />
+            <ImageView fitHeight="38.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <image>
+                  <Image url="@../Downloads/Untitled%20design%20(18).png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" style="-fx-font: 30px Tahoma; -fx-text-fill: #DBE5E6;" text="Bidder" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="30.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="70.0" />
+               </GridPane.margin>
+            </Label>
+            <Button alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" depthTest="DISABLE" mnemonicParsing="false" pickOnBounds="false" prefHeight="27.0" prefWidth="77.0" text="Sign Up" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </Button>
+            <Button alignment="TOP_CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" depthTest="DISABLE" layoutX="510.0" layoutY="23.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="77.0" text="Sign In" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets right="110.0" />
+               </GridPane.margin>
+            </Button>
+            <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="469.0" prefWidth="838.0" style="-fx-background-color: #374551;" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="1.7976931348623157E308" prefHeight="443.0008239746094" vgrow="ALWAYS" />
+              </rowConstraints>
+               <children>
+                  <Label maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="288.0" prefWidth="320.0" text="Welcome to Bidder" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font size="60.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="175.0" right="400.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="146.0" prefWidth="361.0" text="The top platform for connecting sellers with passionate buyers  " textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Helvetica Neue Light" size="25.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets right="360.0" top="75.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="134.66632080078125" minWidth="10.0" prefWidth="29.32611083984375" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="348.000244140625" minWidth="10.0" prefWidth="348.000244140625" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.66632080078125" minWidth="10.0" prefWidth="31.999755859375" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="149.6663055419922" minHeight="0.0" prefHeight="34.66761779785156" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="432.0" minHeight="10.0" prefHeight="392.3323669433594" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="86.66632080078125" minHeight="0.0" prefHeight="36.667633056640625" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E9E6DE;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                 <children>
+                                    <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="372.0" prefWidth="310.0" VBox.vgrow="ALWAYS">
+                                      <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.66632080078125" minWidth="10.0" prefWidth="32.994537353515625" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="278.33837890625" minWidth="10.0" prefWidth="274.338134765625" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.3328857421875" minWidth="10.0" prefWidth="33.661865234375" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints maxHeight="329.3329162597656" minHeight="10.0" prefHeight="55.999481201171875" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="329.3329162597656" minHeight="10.0" prefHeight="35.33290100097656" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="329.3329162597656" minHeight="10.0" prefHeight="36.33290100097656" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="377.3540344238281" minHeight="9.99713134765625" prefHeight="36.332916259765625" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="370.00286865234375" minHeight="10.0" prefHeight="36.999481201171875" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="370.00286865234375" minHeight="0.0" prefHeight="38.3328857421875" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="370.00286865234375" minHeight="10.0" prefHeight="52.00054931640625" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="370.00286865234375" minHeight="10.0" prefHeight="73.00051879882812" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="370.00286865234375" minHeight="10.0" prefHeight="30.999481201171875" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label prefHeight="30.0" prefWidth="93.0" style="-fx-font-weight: EXTRA_BOLD;" text="Username" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+                                             <font>
+                                                <Font name="Helvetica Neue Bold" size="16.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <TextField maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                             <effect>
+                                                <DropShadow color="#7cd4f2" />
+                                             </effect>
+                                          </TextField>
+                                          <PasswordField minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                             <effect>
+                                                <DropShadow color="#7cd4f2" />
+                                             </effect>
+                                          </PasswordField>
+                                          <Label alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="93.0" style="-fx-font-weight: EXTRA_BOLD;" text="Password" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+                                             <font>
+                                                <Font name="Helvetica Neue Bold" size="16.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="224.0" text="Make sure it's at least 8 characters." GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                             <font>
+                                                <Font name="Helvetica Light Oblique" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" style="-fx-background-color: #b8dacd;" text="Sign up for Bidder" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                             <font>
+                                                <Font name="Helvetica Bold" size="19.0" />
+                                             </font>
+                                          </Button>
+                                          <Label prefHeight="30.0" prefWidth="93.0" style="-fx-font-weight: EXTRA_BOLD;" text="Name" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+                                             <font>
+                                                <Font name="Helvetica Neue Bold" size="16.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="5.0" />
+                                             </padding>
+                                          </Label>
+                                          <TextField maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <effect>
+                                                <DropShadow color="#7cd4f2" />
+                                             </effect>
+                                          </TextField>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
+</VBox>
