@@ -1,14 +1,9 @@
 package assignment7Client;
 
-import java.io.*;
+import java.io.*;  
 import java.net.Socket;
 import java.util.*;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.*;
-import javafx.scene.layout.*;
-import javafx.stage.*;
 import com.google.gson.*;
 
 /*
@@ -18,33 +13,17 @@ import com.google.gson.*;
  * It doesn't compile.
  */
 
-public class Client extends Application {
-	ClientController controller;
+public class Client {
 	ObjectInputStream reader;
 	ObjectOutputStream writer;
-
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		FXMLLoader fxmlLoader = new FXMLLoader();
-		Parent root = fxmlLoader.load(getClass().getResource("client.fxml").openStream());
-		controller = fxmlLoader.getController();
-		primaryStage.setTitle("Customer");
-		primaryStage.setScene(new Scene(root, 700, 600));
-		primaryStage.show();
-		controller.myClient = this;
-		customer = new User();
-
-		connectToServer();
-	}
-
 	private static String host = "127.0.0.1";
 	private BufferedReader fromServer;
 	private PrintWriter toServer;
-	private Scanner consoleInput = new Scanner(System.in);
+	Scanner consoleInput = new Scanner(System.in);
 
-	public static void main(String[] args) {
+	public Client() {
 		try {
-			new Client().setUpNetworking();
+			this.setUpNetworking();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

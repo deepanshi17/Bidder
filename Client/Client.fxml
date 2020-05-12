@@ -9,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="526.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assignment7Client.Client">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="526.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assignment7Client.ClientController">
    <children>
       <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="526.0" prefWidth="647.0" VBox.vgrow="ALWAYS">
         <columnConstraints>
@@ -26,7 +26,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
                <image>
-                  <Image url="@/file:BidderIcon.png" />
+                  <Image url="@file:BidderIcon.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" style="-fx-font: 30px Tahoma; -fx-text-fill: #DBE5E6;" text="Bidder" GridPane.halignment="LEFT" GridPane.valignment="CENTER">

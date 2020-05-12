@@ -27,8 +27,8 @@ public class SceneBuilderClient extends Application {
         primaryStage.setTitle("Customer");
         primaryStage.setScene(new Scene(root, 700, 600));
         primaryStage.show();
-        controller.myClient = this;
-        customer = new Customer("", "");
+//        controller.myClient = this;
+//        customer = new Customer("", "");
 
         connectToServer();
     }
@@ -40,8 +40,8 @@ public class SceneBuilderClient extends Application {
             writer = new ObjectOutputStream(sock.getOutputStream());
             reader = new ObjectInputStream(sock.getInputStream());
             System.out.println("networking established");
-            Thread readerThread = new Thread(new IncomingReader()); // see Canvas's Chat for IncomingReader class
-            readerThread.start();
+//            Thread readerThread = new Thread(new IncomingReader()); // see Canvas's Chat for IncomingReader class
+//            readerThread.start();
 
         } catch (IOException e) {}
     }
