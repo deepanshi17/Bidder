@@ -9,8 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="526.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="526.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assignment7Client.Client">
    <children>
       <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="526.0" prefWidth="647.0" VBox.vgrow="ALWAYS">
         <columnConstraints>
@@ -27,7 +26,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
                <image>
-                  <Image url="@../Downloads/Untitled%20design%20(18).png" />
+                  <Image url="@/file:BidderIcon.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" style="-fx-font: 30px Tahoma; -fx-text-fill: #DBE5E6;" text="Bidder" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
@@ -114,7 +113,7 @@
                                           <RowConstraints maxHeight="370.00286865234375" minHeight="10.0" prefHeight="30.999481201171875" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <Label prefHeight="30.0" prefWidth="93.0" style="-fx-font-weight: EXTRA_BOLD;" text="Username" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+                                          <Label prefHeight="30.0" prefWidth="93.0" text="Username" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
                                              <font>
                                                 <Font name="Helvetica Neue Bold" size="16.0" />
                                              </font>
@@ -122,17 +121,17 @@
                                                 <Insets left="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <TextField maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                          <TextField fx:id="name" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                              <effect>
                                                 <DropShadow color="#7cd4f2" />
                                              </effect>
                                           </TextField>
-                                          <PasswordField minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                          <PasswordField fx:id="password" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                              <effect>
                                                 <DropShadow color="#7cd4f2" />
                                              </effect>
                                           </PasswordField>
-                                          <Label alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="93.0" style="-fx-font-weight: EXTRA_BOLD;" text="Password" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+                                          <Label alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="93.0" text="Password" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
                                              <font>
                                                 <Font name="Helvetica Neue Bold" size="16.0" />
                                              </font>
@@ -148,12 +147,12 @@
                                                 <Font name="Helvetica Light Oblique" size="13.0" />
                                              </font>
                                           </Label>
-                                          <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" style="-fx-background-color: #b8dacd;" text="Sign up for Bidder" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                          <Button fx:id="signup" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #b8dacd;" text="Sign up for Bidder" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                              <font>
                                                 <Font name="Helvetica Bold" size="19.0" />
                                              </font>
                                           </Button>
-                                          <Label prefHeight="30.0" prefWidth="93.0" style="-fx-font-weight: EXTRA_BOLD;" text="Name" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+                                          <Label prefHeight="30.0" prefWidth="93.0" text="Name" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
                                              <font>
                                                 <Font name="Helvetica Neue Bold" size="16.0" />
                                              </font>
@@ -161,7 +160,7 @@
                                                 <Insets left="5.0" />
                                              </padding>
                                           </Label>
-                                          <TextField maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                          <TextField fx:id="username" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                              <effect>
                                                 <DropShadow color="#7cd4f2" />
                                              </effect>

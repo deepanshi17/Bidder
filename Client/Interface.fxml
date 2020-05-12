@@ -8,7 +8,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
@@ -22,12 +21,12 @@
          <children>
             <MenuBar maxHeight="1.7976931348623157E308" prefHeight="98.0" prefWidth="625.0" style="-fx-background-color: #2C3949;" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
             <ImageView fitHeight="35.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Downloads/Untitled%20design%20(18).png" />
-               </image>
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <image>
+                  <Image url="@../eclipse-workspace/422C/src/assignment7Client/BidderIcon.png" />
+               </image>
             </ImageView>
             <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="169.0" promptText="Search for items ..." GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
