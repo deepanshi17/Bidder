@@ -1,10 +1,14 @@
 package assignment7Client;
 
-import java.io.*;  
+import java.io.*;    
 import java.net.Socket;
 import java.util.*;
 
+
+
 import com.google.gson.*;
+
+import javafx.collections.*;
 
 /*
  * Author: Vallath Nandakumar and EE 422C instructors
@@ -13,17 +17,38 @@ import com.google.gson.*;
  * It doesn't compile.
  */
 
-public class Client {
+public class Client implements Runnable {
 	ObjectInputStream reader;
 	ObjectOutputStream writer;
 	private static String host = "127.0.0.1";
 	private BufferedReader fromServer;
 	private PrintWriter toServer;
+	private Gson gson = new Gson();
 	Scanner consoleInput = new Scanner(System.in);
+	public Auctioneer[] openAuctions;
+	public ObservableList<Bid> bidhistory;
+	public ObservableList<AuctionItem> purchaseHistory;
+	
+	
+	String name;
+	String username;
+	String password;
 
 	public Client() {
 		try {
 			this.setUpNetworking();
+			this.name = null;
+			this.username = null;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Client(String name, String username) {
+		try {
+			this.setUpNetworking();
+			this.name = name;
+			this.username = username;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -67,12 +92,39 @@ public class Client {
 	}
 
 	protected void processRequest(String input) {
-		return;
+		if(input.charAt(0) == '[') {
+		openAuctions = gson.fromJson(input, Auctioneer[].class);
+		}
+	}
+//		Message response = gson.fromJson(input, Message.class);
+//		
+//		switch(response.command) {
+//			case "allow":
+//				ClientController.clientList.add(this);
+//				Auctioneer[] openAuctions = gson.fromJson(response.input, Auctioneer[].class);
+//				break;
+//			
+//			default:
+//				System.out.println(response.input);
+//				break;
+//		}
+//	}
+	
+	public void run() {
+		while(true) {
+			
+		}
 	}
 
 	protected void sendToServer(String string) {
 		System.out.println("Sending to server: " + string);
 		toServer.println(string);
+		toServer.flush();
+	}
+	
+	protected void sendToServer(Message message) {
+		System.out.println("Sending to server: " + message.input);
+		toServer.println(gson.toJson(message, Message.class));
 		toServer.flush();
 	}
 }

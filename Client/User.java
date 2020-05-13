@@ -15,6 +15,10 @@ public class User {
 		this.bidHistory = new ArrayList<>();
 	}
 	
+	protected void updateHistory(Bid bid) {
+		bidHistory.add(bid);
+	}
+	
 	
 
 }

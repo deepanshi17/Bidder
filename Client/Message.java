@@ -16,6 +16,14 @@ public class Message {
 		this.number = 0;
 		System.out.println("client-side message created");
 	}
+	
+	protected Message(String command) {
+		this.type = "";
+		this.input = command;
+		this.command = command;
+		this.number = 0;
+		System.out.println("server-side message created");
+	}
 
 	protected Message(String type, String command, String input, int number) {
 		this.type = type;

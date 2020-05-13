@@ -8,8 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assignment7Client.ClientController">
    <children>
       <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
         <columnConstraints>
@@ -23,13 +22,13 @@
             <MenuBar maxHeight="1.7976931348623157E308" prefHeight="98.0" prefWidth="625.0" style="-fx-background-color: #2C3949;" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
             <ImageView fitHeight="35.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Downloads/Untitled%20design%20(18).png" />
+                  <Image url="@BidderIcon.png" />
                </image>
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </ImageView>
-            <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="169.0" promptText="Search for items ..." GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <TextField fx:id="search" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="27.0" prefWidth="169.0" promptText="Search for items ..." GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets left="50.0" />
                </GridPane.margin>
@@ -76,7 +75,7 @@
                               <Separator prefWidth="200.0" GridPane.rowIndex="1" />
                               <Separator prefWidth="200.0" GridPane.rowIndex="3" />
                               <Separator prefWidth="200.0" GridPane.rowIndex="5" />
-                              <Hyperlink alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Account Information" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                              <Hyperlink fx:id="info" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Account Information" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                  <font>
                                     <Font name="Helvetica Neue" size="10.0" />
                                  </font>
@@ -84,16 +83,50 @@
                                     <Insets />
                                  </GridPane.margin>
                               </Hyperlink>
-                              <Hyperlink alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="View bid history" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                              <Hyperlink fx:id="bidhistory" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="View bid history" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                  <font>
                                     <Font name="Helvetica Neue" size="10.0" />
                                  </font>
                               </Hyperlink>
-                              <Hyperlink alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="View purchase history" GridPane.rowIndex="4">
+                              <Hyperlink fx:id="purchasehist" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="View purchase history" GridPane.rowIndex="4">
                                  <font>
                                     <Font name="Helvetica Neue" size="10.0" />
                                  </font>
                               </Hyperlink>
+                              <TextField fx:id="username" GridPane.rowIndex="8" />
+                              <TextField fx:id="password" GridPane.rowIndex="6" />
+                              <TextField fx:id="name" GridPane.rowIndex="8" GridPane.valignment="BOTTOM" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="stage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <children>
+                        <GridPane fx:id="grid" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <VBox fx:id="vbox1" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #eee4d4;" />
+                              <VBox fx:id="vbox3" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #eee4d4;" GridPane.columnIndex="2" />
+                              <VBox fx:id="vbox7" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #eee4d4;" GridPane.rowIndex="2" />
+                              <VBox fx:id="vbox5" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #eee4d4;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <VBox fx:id="vbox9" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #eee4d4;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <VBox fx:id="vbox11" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #eee4d4;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <VBox fx:id="vbox4" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1" />
+                              <VBox fx:id="vbox8" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <VBox fx:id="vbox6" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <VBox fx:id="vbox10" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3" />
+                              <VBox fx:id="vbox12" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                              <VBox fx:id="vbox2" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" />
                            </children>
                         </GridPane>
                      </children>
