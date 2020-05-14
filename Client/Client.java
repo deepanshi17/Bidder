@@ -117,6 +117,7 @@ public class Client implements Runnable {
 		
 		if(input.startsWith("Sold")) {
 			controller.createPopUp(input);
+			sendToServer(new Message("browse"));
 		}
 		
 		if(input.startsWith("{")) {
@@ -129,6 +130,9 @@ public class Client implements Runnable {
 					controller.isConfirmed = true;
 				}
 			}
+			else if(response.command.equals("error")) {
+				controller.createPopUp(response.input);
+			}
 		}
 		
 		if(input.equals("new bid")) {
@@ -136,19 +140,6 @@ public class Client implements Runnable {
 		}
 		
 	}
-//		Message response = gson.fromJson(input, Message.class);
-//		
-//		switch(response.command) {
-//			case "allow":
-//				ClientController.clientList.add(this);
-//				Auctioneer[] openAuctions = gson.fromJson(response.input, Auctioneer[].class);
-//				break;
-//			
-//			default:
-//				System.out.println(response.input);
-//				break;
-//		}
-//	}
 
 	public void run() {
 		while (true) {

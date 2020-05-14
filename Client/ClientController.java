@@ -327,7 +327,13 @@ public class ClientController extends Application implements Initializable {
 					if (thisAuction.status) {
 						Double value = Double.parseDouble(bidVal.getText());
 						if (value <= Double.parseDouble(highestBidValue.getText())) {
-							System.out.println("Sorry, bid amount is not high enough");
+							try {
+								createPopUp("Sorry, bid amount is not high enough.");
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							System.out.println("Sorry, bid amount is not high enough.");
 						} else {
 							Bid b = new Bid(value, System.nanoTime(), client.username, thisAuction.Item.id);
 							thisAuction.nextBestBid = thisAuction.bestBid;
@@ -341,7 +347,12 @@ public class ClientController extends Application implements Initializable {
 							client.openAuctions = null;
 						}
 					} else {
-						System.out.println("Invalid bid: item is sold.");
+						try {
+							createPopUp("Invalid bid: item is sold.");
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 	            }
 	        });
