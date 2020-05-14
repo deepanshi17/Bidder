@@ -22,11 +22,11 @@ java -jar <executable_jar>
 
 The server is capable of handling multiple customers using multiple threads. The client sees a start-up window which gives him the options to sign up or log in. The client is identified with a name, username, and password. Passwords are encrypted in the server database to ensure security. Customers can view their bid history, place bids on open auctions, and search for items by item ID using a search bar. Customers can also turn on their sound to enjoy the soothing music of George Gershwin while they bid. The server only accepts valid bids, and customers are informed via a pop-up window if their bid is invalid. Customers are also sent other various updates from the server, such as an invalid log in, an item being sold, or a processing error. Customers can use the log out button to exit the program gracefully. Additionally, each item has a set minimum price. There is a special feature that allows customers to immediately buy an item by clicking "Buy it Now". Items have unique descriptions that are visible to customers. Customers are able to see all their bids across previous sessions. The Observable interface is used to notify customers of changes in the server. 
 
-![Start up screen](https://github.com/[deepansi17]/[final-project-sp-2020-deepanshi17]/blob/[master]/StartUp.png?raw=true)
+![Start up screen](https://github.com/deepansi17/final-project-sp-2020-deepanshi17/blob/master/StartUp.png?raw=true)
 
-![Log in](https://github.com/[deepansi17]/[final-project-sp-2020-deepanshi17]/blob/[master]/Login.png?raw=true)
+![Log in](https://github.com/deepansi17/[final-project-sp-2020-deepanshi17/blob/master/Login.png?raw=true)
 
-![Interface](https://github.com/[deepansi17]/[final-project-sp-2020-deepanshi17]/blob/[master]/Interface.png?raw=true)
+![Interface](https://github.com/deepansi17/final-project-sp-2020-deepanshi17/blob/master/Interface.png?raw=true)
 
 ## For Programmers
 
@@ -72,8 +72,6 @@ The project was developed on GitHub.
 ## References
 
 * [Cryptography](http://www.appsdeveloperblog.com/encrypt-user-password-example-java/)
-
-* [Networking](https://docs.oracle.com/javase/tutorial/networking/sockets/clientServer.html)
 
 * [Networking](https://docs.oracle.com/javase/tutorial/networking/sockets/clientServer.html)
 
