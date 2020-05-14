@@ -9,9 +9,14 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.*;
+import javafx.util.Duration;
+
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -29,6 +34,9 @@ public class ClientController extends Application implements Initializable {
 	private static ArrayList<Thread> threads = new ArrayList<>();
 	private Client myClient = new Client();
 	public String savedName;
+    private static MediaPlayer mediaPlayer;
+	private static String musicFile = "src/GeorgeGershwinRhapsodyInBlue.mp3";    
+    private static Media sound = new Media(new File(musicFile).toURI().toString());
 	
 	Gson gson = new Gson();
 	
@@ -123,6 +131,8 @@ public class ClientController extends Application implements Initializable {
   
 	
 	public static void main(String[] args) {
+
+        mediaPlayer = new MediaPlayer(sound);
 		launch(args);
 	}
 	
@@ -135,7 +145,12 @@ public class ClientController extends Application implements Initializable {
 		primaryStage.setScene(new Scene(root, 700, 600));
 		primaryStage.show();
 		this.primaryStage = primaryStage;
-		
+        mediaPlayer.play();
+        mediaPlayer.setOnEndOfMedia(new Runnable() {
+            public void run() {
+              mediaPlayer.seek(Duration.ZERO);
+            }
+        });
 		
 	}
 	
@@ -357,6 +372,35 @@ public class ClientController extends Application implements Initializable {
 	            }
 	        });
 			Button buyNowb = new Button("buyNow");
+			
+			buyNowb.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public synchronized void handle(ActionEvent event) {
+					if (thisAuction.status) {
+						Double value = Double.parseDouble(buyNowPrice.getText());
+
+						Bid b = new Bid(value, System.nanoTime(), client.username, thisAuction.Item.id);
+						thisAuction.nextBestBid = thisAuction.bestBid;
+						thisAuction.nextBestUser = thisAuction.bestBidUser;
+						thisAuction.bestBid = b;
+						thisAuction.bestBidUser = client.user;
+						thisAuction.status = (value < Double.parseDouble(buyNowPrice.getText())) ? true : false;
+						Message placeBid = new Message("buyNow", client.username, b.amount, b.timestamp, b.item);
+						client.sendToServer(placeBid);
+						client.bidhistory.add(b);
+						client.openAuctions = null;
+					} else {
+						try {
+							createPopUp("Invalid bid: item is sold.");
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+
+				}
+
+			});
 			
 			GridPane gp = new GridPane();
 			gp.setId("gp");
