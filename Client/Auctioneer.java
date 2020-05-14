@@ -22,9 +22,9 @@ public class Auctioneer {
 		this.status = true;
 	}
 	
-	protected boolean JoinAuction(User bidder, Bid bid) {
-		if (bid.amount <= bestBid.amount || this.status == false)
-			return false;
+	protected int JoinAuction(User bidder, Bid bid) {
+		if (bid.amount <= bestBid.amount) return -1;
+		else if(this.status == false) return -2;
 		else {
 			if (!userList.contains(bidder)) {
 				userList.add(bidder);
@@ -34,8 +34,15 @@ public class Auctioneer {
 			bestBid = bid;
 			bestBidUser = bidder;
 			bidder.updateHistory(bid);
-			return true;
+			if(getTimeRemaining() <= 0) {
+				status = false;
+			}
+			return 0;
 		}
+	}
+	
+	protected long getTimeRemaining() {
+		return (Item.timeout * 1000000000) - (System.nanoTime() - Item.startTime);
 	}
 	
 

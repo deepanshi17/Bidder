@@ -4,14 +4,16 @@ public class Bid {
 	double amount;
 	long timestamp;
 	String username;
+	int item;
 	
-	protected Bid(double amount, long timestamp, String userID) {
+	public Bid(double amount, long timestamp, String userID, int item) {
 		this.amount = amount;
 		this.timestamp = timestamp;
 		this.username = userID;
+		this.item = item;
 	}
 	
-	protected Bid(double amount, long timestamp) {
+	public Bid(double amount, long timestamp) {
 		this.amount = amount;
 		this.timestamp = timestamp;
 		this.username = null;

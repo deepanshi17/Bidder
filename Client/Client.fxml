@@ -42,7 +42,7 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="TOP_CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" depthTest="DISABLE" layoutX="510.0" layoutY="23.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="77.0" text="Sign In" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+            <Button alignment="TOP_CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" depthTest="DISABLE" layoutX="510.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleLoginUI" prefHeight="27.0" prefWidth="77.0" text="Sign In" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets right="110.0" />
                </GridPane.margin>

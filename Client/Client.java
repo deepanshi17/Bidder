@@ -1,10 +1,8 @@
 package assignment7Client;
 
-import java.io.*;    
+import java.io.*;
 import java.net.Socket;
 import java.util.*;
-
-
 
 import com.google.gson.*;
 
@@ -26,29 +24,49 @@ public class Client implements Runnable {
 	private Gson gson = new Gson();
 	Scanner consoleInput = new Scanner(System.in);
 	public Auctioneer[] openAuctions;
-	public ObservableList<Bid> bidhistory;
+	public ArrayList<Bid> bidhistory;
 	public ObservableList<AuctionItem> purchaseHistory;
-	
-	
-	String name;
-	String username;
+	ClientController controller;
+
+	private String name;
+	protected String username;
 	String password;
+	User user;
 
 	public Client() {
 		try {
 			this.setUpNetworking();
 			this.name = null;
 			this.username = null;
+			this.user = new User();
+			this.bidhistory = new ArrayList<>();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Client(String name, String username, ClientController ctrl) {
+		try {
+			this.setUpNetworking();
+			this.name = name;
+			this.username = username;
+			this.controller = ctrl;
+			this.user = new User(name, username);
+			this.bidhistory = new ArrayList<>();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public Client(String name, String username) {
+	public Client(Client c) {
 		try {
 			this.setUpNetworking();
-			this.name = name;
-			this.username = username;
+			this.name = c.name;
+			this.username = c.username;
+			this.controller = c.controller;
+			this.user = new User(name, username);
+			this.bidhistory = new ArrayList<>();
+			this.bidhistory = c.bidhistory;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -91,10 +109,31 @@ public class Client implements Runnable {
 		writerThread.start();
 	}
 
-	protected void processRequest(String input) {
+	protected void processRequest(String input) throws IOException {
 		if(input.charAt(0) == '[') {
 		openAuctions = gson.fromJson(input, Auctioneer[].class);
+		controller.updateUI(this);
 		}
+		
+		if(input.startsWith("Sold")) {
+			controller.createPopUp(input);
+		}
+		
+		if(input.startsWith("{")) {
+			Message response = gson.fromJson(input, Message.class);
+			if(response.command.equals("login")) {
+				if(response.input.startsWith("error")){
+					controller.isConfirmed = false;
+				} else {
+					controller.isConfirmed = true;
+				}
+			}
+		}
+		
+		if(input.equals("new bid")) {
+			sendToServer(new Message("browse"));
+		}
+		
 	}
 //		Message response = gson.fromJson(input, Message.class);
 //		
@@ -109,11 +148,14 @@ public class Client implements Runnable {
 //				break;
 //		}
 //	}
-	
+
 	public void run() {
-		while(true) {
-			
+		while (true) {
 		}
+	}
+	
+	protected String getName() {
+		return this.name;
 	}
 
 	protected void sendToServer(String string) {
@@ -121,10 +163,14 @@ public class Client implements Runnable {
 		toServer.println(string);
 		toServer.flush();
 	}
-	
+
 	protected void sendToServer(Message message) {
-		System.out.println("Sending to server: " + message.input);
+		System.out.println("Sending to server: " + message.command);
 		toServer.println(gson.toJson(message, Message.class));
 		toServer.flush();
+	}
+
+	protected Auctioneer[] getAuctions() {
+		return openAuctions;
 	}
 }
