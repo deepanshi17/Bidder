@@ -1,7 +1,5 @@
 package assignment7Client;
 
-import assignment7Server.AuctionItem;
-
 public class Message {
 	String type;		// upper, lower, or strip
 	String command;
@@ -60,6 +58,14 @@ public class Message {
 		this.input = input;
 		this.number = number;
 		this.command = command;
+		System.out.println("client-side message created");
+	}
+	
+	protected Message(String command, String user) {
+		this.type = "lower";
+		this.input = command;
+		this.command = command;
+		this.username = user;
 		System.out.println("client-side message created");
 	}
 }

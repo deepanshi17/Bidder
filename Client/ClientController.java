@@ -1,9 +1,7 @@
 package assignment7Client;
 
-import javafx.application.Application; 
+import javafx.application.Application;   
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.*;
@@ -30,6 +28,7 @@ public class ClientController extends Application implements Initializable {
 	private static HashMap<String, Client> clientList = new HashMap<>();
 	private static ArrayList<Thread> threads = new ArrayList<>();
 	private Client myClient = new Client();
+	public String savedName;
 	
 	Gson gson = new Gson();
 	
@@ -159,10 +158,6 @@ public class ClientController extends Application implements Initializable {
 		Client client = new Client(name.getText(), username.getText(), this);
 		this.myClient = client;
 		clientList.put(myClient.username, myClient);
-		Thread clientThread = new Thread(myClient);
-		clientThread.setDaemon(true);
-		clientThread.start();
-		threads.add(clientThread);
 		Message message = new Message("register", name.getText(), username.getText(), password.getText());
 		myClient.sendToServer(gson.toJson(message, Message.class));
 		primaryStage.close();
@@ -173,32 +168,36 @@ public class ClientController extends Application implements Initializable {
 	@FXML
 	private void handleLogin(ActionEvent e) throws IOException {
 		String user = username.getText();
-		Client client = new Client();
-		if (clientList != null) {
-			if (clientList.containsKey(user)) {
-				Client tempClient = new Client(name.getText(), username.getText(), this);
-				Message message = new Message("login", name.getText(), username.getText(), password.getText());
-				tempClient.sendToServer(message);
+		Client tempClient = new Client(null, username.getText(), controller);
+		Message message = new Message("login", null, username.getText(), password.getText());
+		tempClient.sendToServer(message);
 
-				while (this.isConfirmed == null) {
-
-				}
-				if (this.isConfirmed == false) {
-					createPopUp("Sorry, user does not exist.");
-				} else {
-					myClient = clientList.get(user);
-					controller.myClient = client;
-					Thread clientThread = new Thread(controller.myClient);
-					clientThread.setDaemon(true);
-					clientThread.start();
-					threads.add(clientThread);
-					primaryStage.close();
-					primaryStage.setScene(makeUI(controller.myClient));
-					primaryStage.show();
-				}
-			}
+		while (this.isConfirmed == null) {
+			System.out.println();
+		}
+		if (this.isConfirmed == false) {
+			createPopUp("Sorry, user does not exist.");
+		} else {
+			Client client = new Client(savedName, user, this);
+			client.controller = controller;
+			this.myClient = client;
+			Message mess = new Message("browse");
+			myClient.sendToServer(gson.toJson(mess, Message.class));
+			primaryStage.close();
+			primaryStage.setScene(makeUI(myClient));
+			primaryStage.show();
 		}
 
+	}
+	
+	@FXML
+	private void handleLogout(ActionEvent e) throws Exception {
+		Client client  = controller.myClient;
+		client.sendToServer(new Message("logout", client.username));
+		primaryStage.close();
+		Platform.exit();
+		stop();
+		System.exit(0);
 	}
 	
 	@FXML
@@ -306,13 +305,10 @@ public class ClientController extends Application implements Initializable {
 			System.out.println();
 		}
 		auctions = client.getAuctions();
-		ClientController ctrl = new ClientController();
-		ctrl = fxmlLoader.getController();
-//		this.controller = ctrl;
 		for(Integer i = 1 ; i <= auctions.length; i++) {
 			Auctioneer thisAuction = auctions[i-1];
 			String current = "vbox" + i.toString();
-			VBox vb = (VBox) ctrl.grid.lookup("#" + current);
+			VBox vb = (VBox) controller.grid.lookup("#" + current);
 			
 			Label name = new Label(auctions[i - 1].Item.name);
 			Label description = new Label(auctions[i - 1].Item.description);

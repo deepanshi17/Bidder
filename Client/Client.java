@@ -1,6 +1,6 @@
 package assignment7Client;
 
-import java.io.*;
+import java.io.*; 
 import java.net.Socket;
 import java.util.*;
 
@@ -125,6 +125,7 @@ public class Client implements Runnable {
 				if(response.input.startsWith("error")){
 					controller.isConfirmed = false;
 				} else {
+					controller.savedName = response.input;
 					controller.isConfirmed = true;
 				}
 			}

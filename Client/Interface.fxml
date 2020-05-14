@@ -36,7 +36,7 @@
                   <Font size="10.0" />
                </font>
             </TextField>
-            <Button alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" depthTest="DISABLE" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="22.0" prefWidth="49.0" text="Log out" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <Button alignment="CENTER" blendMode="HARD_LIGHT" contentDisplay="CENTER" depthTest="DISABLE" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLogout" prefHeight="22.0" prefWidth="49.0" text="Log out" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets right="10.0" />
                </GridPane.margin>
