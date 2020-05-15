@@ -115,7 +115,7 @@
                             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
                           </rowConstraints>
                            <children>
-                              <Hyperlink alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#returntoRegister" text="Create an account.">
+                              <Hyperlink alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#returntoRegister" onMouseClicked="#returntoRegister" text="Create an account.">
                                  <font>
                                     <Font name="Helvetica Neue" size="16.0" />
                                  </font>

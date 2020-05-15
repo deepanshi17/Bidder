@@ -1,6 +1,6 @@
 package assignment7Client;
 
-import javafx.application.Application;   
+import javafx.application.Application;    
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -137,7 +137,7 @@ public class ClientController extends Application implements Initializable {
 	}
 	
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) throws Exception {		// Primary controller
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("client.fxml"));
 		Parent root = (Parent) fxmlLoader.load();
 		controller = fxmlLoader.getController();
@@ -155,7 +155,7 @@ public class ClientController extends Application implements Initializable {
 	}
 	
 	@Override
-	public void stop() throws Exception {
+	public void stop() throws Exception {		// Called when log out
 		super.stop();
 		for(Thread t : threads) {
 			t.interrupt();
@@ -164,12 +164,12 @@ public class ClientController extends Application implements Initializable {
 	
 	
 	@Override
-	public void initialize(URL url, ResourceBundle rb) {
+	public void initialize(URL url, ResourceBundle rb) {	// TODO: Move stuff here to clean code up
 		
 	}
 	
 	@FXML
-	private void handleButtonAction(ActionEvent e) throws JsonSyntaxException, IOException {
+	private void handleButtonAction(ActionEvent e) throws JsonSyntaxException, IOException {	// Handles Sign Up
 		Client client = new Client(name.getText(), username.getText(), this);
 		this.myClient = client;
 		clientList.put(myClient.username, myClient);
@@ -181,7 +181,7 @@ public class ClientController extends Application implements Initializable {
 	}
 	
 	@FXML
-	private void handleLogin(ActionEvent e) throws IOException {
+	private void handleLogin(ActionEvent e) throws IOException {	// Log in 
 		String user = username.getText();
 		Client tempClient = new Client(null, username.getText(), controller);
 		Message message = new Message("login", null, username.getText(), password.getText());
@@ -206,7 +206,7 @@ public class ClientController extends Application implements Initializable {
 	}
 	
 	@FXML
-	private void handleLogout(ActionEvent e) throws Exception {
+	private void handleLogout(ActionEvent e) throws Exception {		// Log out
 		Client client  = controller.myClient;
 		client.sendToServer(new Message("logout", client.username));
 		primaryStage.close();
@@ -216,7 +216,7 @@ public class ClientController extends Application implements Initializable {
 	}
 	
 	@FXML
-	private void returntoRegister(ActionEvent e) throws IOException {
+	private void returntoRegister(ActionEvent e) throws IOException {		// Switch screen to Register
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("client.fxml"));
 		Parent root = (Parent) fxmlLoader.load();
 		controller = fxmlLoader.getController();
@@ -226,7 +226,7 @@ public class ClientController extends Application implements Initializable {
 	}
 	
 	@FXML
-	private void handleLoginUI(ActionEvent e) throws IOException {
+	private void handleLoginUI(ActionEvent e) throws IOException {		// Switch screen to Log in
 		primaryStage.close();
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
 		Parent root = (Parent) fxmlLoader.load();
@@ -240,7 +240,7 @@ public class ClientController extends Application implements Initializable {
 	
 	@SuppressWarnings("unchecked")
 	@FXML
-	private void showClientHistory(ActionEvent e) {
+	private void showClientHistory(ActionEvent e) {		// View Client History
 		
 		display.getChildren().clear();
 		
@@ -248,28 +248,21 @@ public class ClientController extends Application implements Initializable {
 		table.setEditable(true);
 		
 		historyTitle.setText(controller.myClient.getName() + "'s History");
-		historyTitle.setFont(new Font("Helvetica", 10));
+		historyTitle.setFont(new Font("Helvetica", 15));
 		
 		TableColumn<ItemPair, String> items = new TableColumn<>("Item ID");
 		items.setCellValueFactory(new PropertyValueFactory<>("id"));
 		TableColumn<ItemPair, String> amounts = new TableColumn<>("Amount");		
 		amounts.setCellValueFactory(new PropertyValueFactory<>("amount"));
-		
 		table.getColumns().addAll(items, amounts);
-		
-//		ObservableList<ItemPair> data = FXCollections.observableArrayList();
-		
 		for(Bid b : controller.myClient.bidhistory) {
-			
-			
 			table.getItems().add(new ItemPair(Integer.toString(b.item), String.valueOf(b.amount)));
 		}
-		
 		display.getChildren().add(table);
 	}
 	
 	@FXML
-	private void searchHandle(ActionEvent e) {
+	private void searchHandle(ActionEvent e) {			// Search bar
 		String searched = search.getText();
 		String current = "vbox" + searched;
 		VBox vb = (VBox) this.grid.lookup("#" + current);
@@ -291,7 +284,7 @@ public class ClientController extends Application implements Initializable {
 	}
 	
 	
-	public void createPopUp(String message) throws IOException {
+	public void createPopUp(String message) throws IOException {		// Pop up messages to client
 		Platform.runLater(new Runnable() {
 			public void run() {
 				Stage newStage = new Stage();
@@ -310,7 +303,7 @@ public class ClientController extends Application implements Initializable {
 			}});
 	}
 
-	public Scene makeUI(Client client) throws IOException {
+	public Scene makeUI(Client client) throws IOException {			// Load auction interface 
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("interface.fxml"));
 		Parent root = (Parent) fxmlLoader.load();
 		controller = fxmlLoader.getController();
@@ -320,23 +313,29 @@ public class ClientController extends Application implements Initializable {
 			System.out.println();
 		}
 		auctions = client.getAuctions();
-		for(Integer i = 1 ; i <= auctions.length; i++) {
+		for(Integer i = 1 ; i <= auctions.length; i++) {		// Makes blocks based on auction items
 			Auctioneer thisAuction = auctions[i-1];
 			String current = "vbox" + i.toString();
 			VBox vb = (VBox) controller.grid.lookup("#" + current);
 			
 			Label name = new Label(auctions[i - 1].Item.name);
+			name.setStyle(" -fx-font-weight: bolder;");
+			name.setFont(new Font("Helvetica", 20));
 			Label description = new Label(auctions[i - 1].Item.description);
+			description.setStyle(" -fx-font-style: italic;");
 			Label buyNow = new Label("Buy Now: ");
+			buyNow.setStyle(" -fx-font-weight: bold;");
 			Label buyNowPrice = new Label(Double.toString(auctions[i - 1].Item.buyItNow));
 			Label highestBid = new Label("Highest bid: ");
+			highestBid.setStyle(" -fx-font-weight: bold;");
 			Label highestBidValue = new Label(Double.toString(auctions[i - 1].bestBid.amount));
 			Label highestBidder = new Label("Highest bidder: ");
+			highestBidder.setStyle(" -fx-font-weight: bold;");
 			Label highestBidderName = new Label(auctions[i - 1].bestBid.username);
 			TextField bidVal = new TextField();
 			Button bid = new Button("bid");
 			
-			bid.setOnAction(new EventHandler<ActionEvent>() {
+			bid.setOnAction(new EventHandler<ActionEvent>() {		// Bid handler
 	            @Override
 				public synchronized void handle(ActionEvent event) {
 					if (thisAuction.status) {
@@ -371,8 +370,7 @@ public class ClientController extends Application implements Initializable {
 					}
 	            }
 	        });
-			Button buyNowb = new Button("buyNow");
-			
+			Button buyNowb = new Button("buyNow");					// Similar to bid, TODO: Merge
 			buyNowb.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public synchronized void handle(ActionEvent event) {
@@ -402,14 +400,15 @@ public class ClientController extends Application implements Initializable {
 
 			});
 			
-			GridPane gp = new GridPane();
+			GridPane gp = new GridPane();		// Block code
 			gp.setId("gp");
 
 			gp.addRow(0, name);
-			gp.addRow(1, description);
+			gp.addRow(1, description);		
 			HBox bn = new HBox(5, buyNow, buyNowPrice);
 			gp.addRow(2, bn);
 			HBox bidbox = new HBox(5, highestBid, highestBidValue);
+
 			gp.addRow(4, bidbox);
 			HBox bidderbox = new HBox(5, highestBidder, highestBidderName);
 			gp.addRow(5,  bidderbox);
@@ -418,13 +417,15 @@ public class ClientController extends Application implements Initializable {
 			gp.addRow(6, placebid);
 			gp.addRow(7, buyNowb);
 			
-			gp.setHgap(2); //horizontal gap in pixels
-			gp.setVgap(2); //vertical gap in pixels
+			gp.setHgap(5); //horizontal gap in pixels
+			gp.setVgap(10); //vertical gap in pixels
 			gp.setPadding(new Insets (2, 2, 2, 2));
 			
 			if(thisAuction.status == false) {
 				Label sold = new Label("SOLD");
-				gp.add(sold, 5, 5);
+				sold.setStyle("-fx-font-weight: bold");
+				sold.setFont(new Font("Helvetica", 30));
+				gp.add(sold, 5, 0);
 				placebid.setDisable(true);
 				buyNowb.setDisable(true);
 			}

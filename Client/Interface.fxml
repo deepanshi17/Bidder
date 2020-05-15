@@ -54,23 +54,23 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="113.0" style="-fx-background-color: #bbcdd3;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="113.0" style="-fx-background-color: #B56576;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                      <children>
                         <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="353.0" prefWidth="125.0" VBox.vgrow="ALWAYS">
                           <columnConstraints>
                             <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints maxHeight="-Infinity" minHeight="5.0" prefHeight="28.0" vgrow="NEVER" />
+                            <RowConstraints maxHeight="60.0" minHeight="5.0" prefHeight="60.0" vgrow="NEVER" />
                             <RowConstraints maxHeight="136.0" minHeight="0.0" prefHeight="4.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="-Infinity" minHeight="3.0" prefHeight="27.0" vgrow="NEVER" />
+                              <RowConstraints maxHeight="65.0" minHeight="3.0" prefHeight="59.0" vgrow="NEVER" />
                             <RowConstraints maxHeight="307.0" minHeight="2.0" prefHeight="4.0" vgrow="SOMETIMES" />
-                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="232.0" vgrow="ALWAYS" />
+                              <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="226.0" vgrow="ALWAYS" />
                           </rowConstraints>
                            <children>
                               <Separator prefWidth="200.0" GridPane.rowIndex="1" />
                               <Separator prefWidth="200.0" GridPane.rowIndex="3" />
-                              <Hyperlink fx:id="info" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#showClientHistory" text="View my history" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                              <Hyperlink fx:id="info" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onAction="#showClientHistory" text="View my history" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                  <font>
                                     <Font name="Helvetica Neue" size="10.0" />
                                  </font>
@@ -78,7 +78,7 @@
                                     <Insets />
                                  </GridPane.margin>
                               </Hyperlink>
-                              <Hyperlink fx:id="bidhistory" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="View bid history" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                              <Hyperlink fx:id="bidhistory" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="55.0" prefWidth="127.0" text="View bid history" textFill="WHITE" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                  <font>
                                     <Font name="Helvetica Neue" size="10.0" />
                                  </font>
@@ -90,17 +90,12 @@
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
-                                    <RowConstraints maxHeight="92.0" minHeight="2.0" prefHeight="24.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="208.0" minHeight="2.0" prefHeight="208.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="-Infinity" minHeight="0.0" prefHeight="31.0" vgrow="NEVER" />
+                                    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="2.0" prefHeight="195.0" vgrow="ALWAYS" />
                                 </rowConstraints>
                                  <children>
-                                    <Label fx:id="historyTitle" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
-                                       <GridPane.margin>
-                                          <Insets left="5.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <VBox fx:id="display" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1" />
+                                    <VBox fx:id="display" prefHeight="276.0" prefWidth="125.0" GridPane.rowIndex="1" />
+                                    <Label fx:id="historyTitle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="93.0" textAlignment="CENTER" />
                                  </children>
                               </GridPane>
                            </children>
@@ -118,18 +113,14 @@
                           <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <VBox fx:id="vbox1" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #eee4d4;" />
-                              <VBox fx:id="vbox3" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #eee4d4;" GridPane.columnIndex="2" />
-                              <VBox fx:id="vbox7" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #eee4d4;" GridPane.rowIndex="2" />
-                              <VBox fx:id="vbox5" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #eee4d4;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <VBox fx:id="vbox9" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #eee4d4;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                              <VBox fx:id="vbox4" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1" />
-                              <VBox fx:id="vbox8" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <VBox fx:id="vbox6" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <VBox fx:id="vbox2" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" />
+                              <VBox fx:id="vbox1" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #F4F1DE;" />
+                              <VBox fx:id="vbox3" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #F4F1DE;" GridPane.columnIndex="2" />
+                              <VBox fx:id="vbox5" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #F4F1DE;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <VBox fx:id="vbox4" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: D0D6B5#6D597A;" GridPane.rowIndex="1" />
+                              <VBox fx:id="vbox6" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: D0D6B5;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <VBox fx:id="vbox2" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: D0D6B5;" GridPane.columnIndex="1" />
                            </children>
                         </GridPane>
                      </children>

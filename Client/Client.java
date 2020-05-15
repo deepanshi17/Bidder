@@ -1,6 +1,6 @@
 package assignment7Client;
 
-import java.io.*; 
+import java.io.*;
 import java.net.Socket;
 import java.util.*;
 
@@ -18,13 +18,13 @@ import javafx.collections.*;
 public class Client implements Runnable {
 	ObjectInputStream reader;
 	ObjectOutputStream writer;
-	private static String host = "127.0.0.1";
+	private static String host = "127.0.0.1";		// Host: 127.0.0.1 hard coded
 	private BufferedReader fromServer;
 	private PrintWriter toServer;
 	private Gson gson = new Gson();
 	Scanner consoleInput = new Scanner(System.in);
-	public Auctioneer[] openAuctions;
-	public ArrayList<Bid> bidhistory;
+	public Auctioneer[] openAuctions;				// Current auction information
+	public ArrayList<Bid> bidhistory;				// Individual client history
 	public ObservableList<AuctionItem> purchaseHistory;
 	ClientController controller;
 
@@ -33,7 +33,7 @@ public class Client implements Runnable {
 	String password;
 	User user;
 
-	public Client() {
+	public Client() {		// Default constructor
 		try {
 			this.setUpNetworking();
 			this.name = null;
@@ -45,7 +45,7 @@ public class Client implements Runnable {
 		}
 	}
 
-	public Client(String name, String username, ClientController ctrl) {
+	public Client(String name, String username, ClientController ctrl) {	// Called by ClientController
 		try {
 			this.setUpNetworking();
 			this.name = name;
@@ -58,7 +58,7 @@ public class Client implements Runnable {
 		}
 	}
 	
-	public Client(Client c) {
+	public Client(Client c) {				// Copy constructor
 		try {
 			this.setUpNetworking();
 			this.name = c.name;
@@ -74,11 +74,11 @@ public class Client implements Runnable {
 
 	private void setUpNetworking() throws Exception {
 		@SuppressWarnings("resource")
-		Socket socket = new Socket(host, 4242);
+		Socket socket = new Socket(host, 4242);				// Port: 4242
 		System.out.println("Connecting to... " + socket);
 		fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		toServer = new PrintWriter(socket.getOutputStream());
-		Thread readerThread = new Thread(new Runnable() {
+		Thread readerThread = new Thread(new Runnable() {		// Threads constantly polling for server messages
 			@Override
 			public void run() {
 				String input;
@@ -109,20 +109,20 @@ public class Client implements Runnable {
 		writerThread.start();
 	}
 
-	protected void processRequest(String input) throws IOException {
-		if(input.charAt(0) == '[') {
+	protected void processRequest(String input) throws IOException {	// Can be Json message or regular string
+		if(input.charAt(0) == '[') {			// Auctioneer list
 		openAuctions = gson.fromJson(input, Auctioneer[].class);
 		controller.updateUI(this);
 		}
 		
-		if(input.startsWith("Sold")) {
+		if(input.startsWith("Sold")) {			// Item sold
 			controller.createPopUp(input);
 			sendToServer(new Message("browse"));
 		}
 		
-		if(input.startsWith("{")) {
-			Message response = gson.fromJson(input, Message.class);
-			if(response.command.equals("login")) {
+		if(input.startsWith("{")) {		// Regular Message
+			Message response = gson.fromJson(input, Message.class);	
+			if(response.command.equals("login")) {		// Login request
 				if(response.input.startsWith("error")){
 					controller.isConfirmed = false;
 				} else {
@@ -130,12 +130,12 @@ public class Client implements Runnable {
 					controller.isConfirmed = true;
 				}
 			}
-			else if(response.command.equals("error")) {
+			else if(response.command.equals("error")) {		// Error message
 				controller.createPopUp(response.input);
 			}
 		}
 		
-		if(input.equals("new bid")) {
+		if(input.equals("new bid")) {		// Browse to update Auction data
 			sendToServer(new Message("browse"));
 		}
 		
@@ -162,7 +162,7 @@ public class Client implements Runnable {
 		toServer.flush();
 	}
 
-	protected Auctioneer[] getAuctions() {
+	protected Auctioneer[] getAuctions() {		// Controller instance gets current auction list
 		return openAuctions;
 	}
 }
