@@ -26,8 +26,6 @@ The server is capable of handling multiple customers using multiple threads. The
 
 ![Log in](https://github.com/EE422C/final-project-sp-2020-deepanshi17/blob/master/Login.png?raw=true)
 
-![Interface](https://github.com/EE422C/final-project-sp-2020-deepanshi17/blob/master/interface.png?raw=true)
-
 ## For Programmers
 
 This program can be easily deployed and tested by starting the server and then adding multiple clients across different machines. The program is machine independent, and the clients and server communicate through the use of Sockets. 
